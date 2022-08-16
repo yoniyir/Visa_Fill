@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hey</h1>
+    <div id="container"></div>
+</body>
+<script>
+    let data;
+    fetch("data.json")
+        .then(response => response.json())
+        .then(json => handleData(json));
+
+
+    function handleData(json_file) {
+
+        for (var prop in json_file) {
+            let key = prop;
+            let value = json_file[prop];
+            const node = document.createElement("input");
+            const title = document.createElement("label");
+            const text = document.createTextNode(key);
+            node.setAttribute("value", value);
+            title.appendChild(text);
+
+            document.getElementById("container").appendChild(title);
+            document.getElementById("container").appendChild(node);
+        }
+    }
+
+
+</script>
+
+</html>
